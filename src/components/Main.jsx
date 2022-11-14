@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from "react"
 import { getCurrentUser } from "../api"
-import {LoginPanel, Navbar, RegisterPanel} from "./"
+import {LoginPanel, Navbar, RegisterPanel, RoutineList} from "./"
 
 const Main = () => {
     const [user, setUser] = useState(null) 
@@ -13,16 +13,14 @@ const Main = () => {
             setUser(currentUser)
         }
         saveUser()
-      }
-      
+      }      
     }, [])
+
     
     return (
         <div id="main">
             <Navbar />
-
-            <RegisterPanel />
-            <LoginPanel />
+            <RoutineList user={user}/>
         </div>
     )
 }
