@@ -20,10 +20,14 @@ const Main = () => {
     
     return (
         <div id="main">
-
-            <Navbar setUser={setUser} />
-            {user ? <RoutineList user={user}/> : null}
-
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Navbar user={user} setUser={setUser} />}>
+                        <Route index element={user ? <RoutineList user={user}/> : null} />
+                        <Route path="register" element={<RegisterPanel setUser={setUser}/>}/>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     )
 }

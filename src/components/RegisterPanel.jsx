@@ -1,7 +1,9 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 import { register } from "../api";
 
 const RegisterPanel = ({ setUser }) => {
+    const navigate = useNavigate();
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -10,6 +12,7 @@ const RegisterPanel = ({ setUser }) => {
             password: event.target[1].value
         })
         setUser(newUser)
+        navigate("/")
     }
 
     return (

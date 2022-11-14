@@ -18,6 +18,17 @@ body {
   justify-content: space-around;
 }
 
+.register_panel {
+  background-color: beige;
+  padding: 20px;
+}
+
+.register_form {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .routine_list {
   margin: 10px;
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom'
 import { logIn } from "../api";
 
 
@@ -26,6 +27,10 @@ const LoginPanel = ({ setUser }) => {
                 </label>
                 <input type="submit" value="Log In" />
             </form>
+            <span>
+                Don't have an account? 
+                <Link to="/register"> Sign Up</Link>
+            </span>
         </div> 
     )
 }
