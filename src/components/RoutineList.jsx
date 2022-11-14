@@ -7,7 +7,6 @@ const RoutineList = ({user}) => {
 
     useEffect(() => {
         async function callGetUserRoutines() {
-            console.log(user);
             const list = await getUserRoutines(user.username)
             setRoutineList(list)
         }
