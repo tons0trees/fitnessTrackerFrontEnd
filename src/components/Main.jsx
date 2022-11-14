@@ -1,10 +1,12 @@
 import React from "react"
-import {Navbar} from "./"
+import {LoginPanel, Navbar, RegisterPanel} from "./"
 
 const Main = () => {
     return (
         <div id="main">
             <Navbar />
+            <RegisterPanel />
+            <LoginPanel />
         </div>
     )
 }
