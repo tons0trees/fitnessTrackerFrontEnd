@@ -5,6 +5,20 @@ const reqObj = {
         'Content-Type': 'application/json',
     }
 }
+const localToken = localStorage.getItem("token")
+if (localToken) {
+    reqObj.headers["Authorization"] = "Bearer " + localToken
+}
+
+export async function getCurrentUser() {
+    try {
+        const response = await fetch(url + '/users/me', reqObj)
+        const result = await response.json()
+        return result.user
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 export async function logIn({username, password}) {
     reqObj.method = "POST"
@@ -16,7 +30,10 @@ export async function logIn({username, password}) {
     try {
         const response = await fetch(url+'/users/login', reqObj)
         const result = await response.json()
-        console.log(result)
+        const token = result.token
+        localStorage.removeItem("token")
+        localStorage.setItem("token", token)
+        return result.user
     } catch (error) {
         console.error(error)
     }
@@ -32,7 +49,10 @@ export async function register({username, password}) {
     try {
         const response = await fetch(url+'/users/register', reqObj)
         const result = await response.json()
-        console.log(result)
+        const token = result.token
+        localStorage.removeItem("token")
+        localStorage.setItem("token", token)
+        return result.user
     } catch (error) {
         console.error(error)
     }
