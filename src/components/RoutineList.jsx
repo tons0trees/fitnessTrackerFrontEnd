@@ -16,7 +16,7 @@ const RoutineList = ({user}) => {
     return (
         <div className='routine_list'>
             {routineList.map((elem) => {
-                return <RoutineItem routine={elem}/>
+                return <RoutineItem key={"routine_" + elem.id} routine={elem}/>
             })}
         </div>
     )

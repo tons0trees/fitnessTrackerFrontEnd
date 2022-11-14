@@ -1,14 +1,15 @@
 import React from "react"
 import { register } from "../api";
 
-const RegisterPanel = () => {
+const RegisterPanel = ({ setUser }) => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        await register({
+        const newUser = await register({
             username: event.target[0].value,
             password: event.target[1].value
         })
+        setUser(newUser)
     }
 
     return (

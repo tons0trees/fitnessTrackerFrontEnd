@@ -2,14 +2,15 @@ import React from "react"
 import { logIn } from "../api";
 
 
-const LoginPanel = () => {
+const LoginPanel = ({ setUser }) => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        await logIn({
+        const user = await logIn({
             username: event.target[0].value,
             password: event.target[1].value
         })
+        setUser(user)
     }
 
     return (

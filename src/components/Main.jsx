@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from "react"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { getCurrentUser } from "../api"
 import {LoginPanel, Navbar, RegisterPanel, RoutineList} from "./"
 
@@ -19,8 +20,10 @@ const Main = () => {
     
     return (
         <div id="main">
-            <Navbar />
+
+            <Navbar setUser={setUser} />
             {user ? <RoutineList user={user}/> : null}
+
         </div>
     )
 }

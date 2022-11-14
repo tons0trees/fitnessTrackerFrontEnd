@@ -1,11 +1,11 @@
 import React from 'react'
 import LoginPanel from './LoginPanel';
 
-const Navbar = () => {
+const Navbar = ({ setUser }) => {
     return (
         <div id='navbar'>
             <h2>I am navbar</h2>
-            <LoginPanel />
+            <LoginPanel setUser={setUser} />
         </div>
     );
 };
