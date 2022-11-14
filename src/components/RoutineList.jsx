@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { RoutineItem } from './'
-import { getUserRoutines } from '../api'
+import { getUserRoutines, getPublicRoutines } from '../api'
 
 const RoutineList = ({user}) => {
     const [routineList, setRoutineList] = useState([])
 
     useEffect(() => {
-        async function callGetUserRoutines() {
-            const list = await getUserRoutines(user.username)
-            setRoutineList(list)
+        if (user) {
+            async function callGetUserRoutines() {
+                const list = await getUserRoutines(user.username)
+                setRoutineList(list)
+            }
+            callGetUserRoutines()
+        } else {
+            async function callGetPubicRoutines() {
+                const list = await getPublicRoutines()
+                setRoutineList(list)
+            }
+            callGetPubicRoutines()
         }
-        callGetUserRoutines()
     },[])
 
     return (

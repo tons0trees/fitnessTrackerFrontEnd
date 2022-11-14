@@ -18,6 +18,12 @@ body {
   justify-content: space-around;
 }
 
+#nav_tabs {
+  background-color: #222222;
+  display: flex;
+  justify-content: space-around;
+}
+
 .register_panel {
   background-color: beige;
   padding: 20px;

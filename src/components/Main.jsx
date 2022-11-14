@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react"
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {BrowserRouter, Routes, Route } from "react-router-dom"
 import { getCurrentUser } from "../api"
-import {LoginPanel, Navbar, RegisterPanel, RoutineList} from "./"
+import { Navbar, RegisterPanel, RoutineList, ActivityList } from "./"
 
 const Main = () => {
     const [user, setUser] = useState(null) 
@@ -22,8 +22,9 @@ const Main = () => {
         <div id="main">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Navbar user={user} setUser={setUser} />}>
-                        <Route index element={user ? <RoutineList user={user}/> : null} />
+                    <Route path="/" element={<Navbar user={user} setUser={setUser}/>}>
+                        <Route path="routines" element={<RoutineList user={user}/>}/>
+                        <Route path="activities" element={<ActivityList user={user}/>} />
                         <Route path="register" element={<RegisterPanel setUser={setUser}/>}/>
                     </Route>
                 </Routes>

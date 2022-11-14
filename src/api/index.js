@@ -75,3 +75,13 @@ export async function getUserRoutines(username) {
         console.error(error)
     }
 }
+
+export async function getPublicRoutines() {
+    try {
+        const response = await fetch(url + '/routines', reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
