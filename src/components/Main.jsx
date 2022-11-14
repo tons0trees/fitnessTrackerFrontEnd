@@ -20,7 +20,7 @@ const Main = () => {
     return (
         <div id="main">
             <Navbar />
-            <RoutineList user={user}/>
+            {user ? <RoutineList user={user}/> : null}
         </div>
     )
 }
