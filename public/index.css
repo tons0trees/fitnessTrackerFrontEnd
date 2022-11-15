@@ -39,15 +39,22 @@ body {
   margin: 10px;
 }
 
-.activity_item {
-  margin: 5px;
-  border-bottom: solid black 2px;
-
-}
-
 .routine_item {
   background-color: beige;
   padding: 10px;
   margin: 5px;
   border: solid black 2px;
+}
+
+.activity_tab {
+  background-color: beige;
+  padding: 10px;
+  margin: 5px;
+  border: solid black 2px;
+}
+
+.activity_item {
+  margin: 5px;
+  border-bottom: solid black 2px;
+
 }

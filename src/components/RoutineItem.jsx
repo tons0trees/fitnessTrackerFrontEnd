@@ -11,7 +11,7 @@ const RoutineItem = ({routine}) => {
                 <p>{routine.goal}</p>
                 <ol>
                     {routine.activities.map((elem) => {
-                    return <ActivityItem key={"activity_" + elem.id} activity={elem}/>
+                    return <li key={"activity_" + elem.id}><ActivityItem  activity={elem}/></li>
                     })}
                 </ol>
                     

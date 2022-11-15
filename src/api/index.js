@@ -85,3 +85,13 @@ export async function getPublicRoutines() {
         console.error(error)
     }
 }
+
+export async function getPublicActivities() {
+    try {
+        const response = await fetch(url + '/activities', reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.errer(error)
+    }
+}

@@ -12,6 +12,7 @@ const Navbar = ({ user, setUser }) => {
             <div id='nav_tabs'>
                 <Link to='/routines'>Routines</Link>
                 <Link to='/activities'>Activities</Link>
+                { user ? <Link to='/myroutines'>My Routines</Link> : null }
             </div>
 
             <Outlet />
