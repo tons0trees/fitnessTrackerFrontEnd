@@ -56,5 +56,6 @@ body {
 .activity_item {
   margin: 5px;
   border-bottom: solid black 2px;
+  margin-bottom: 10px;
 
 }

@@ -2,14 +2,11 @@ import React from "react";
 
 const ActivityItem = ({ activity }) => {
   return (
-    <span className="activity_item">
-      <p>
-        <b>name: {activity.name}</b>
-      </p>
-      <p>{activity.description}</p>
-      <p>duration: {activity.duration}</p>
-      <p>count: {activity.count}</p>
-    </span>
+    <div className="activity_item">
+        <b>{activity.name}</b>
+        <p>{activity.description}</p>
+        <span> duration: {activity.duration},  count: {activity.count}</span>
+    </div>
   );
 };
 

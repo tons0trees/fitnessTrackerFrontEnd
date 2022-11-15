@@ -1,24 +1,29 @@
 const url = 'https://fitnesstrac-kr.herokuapp.com/api'
-const reqObj = {
+const notreqObj = {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
     }
 }
 
-function includeToken() {
+function includeToken(paramObj) {
     const localToken = localStorage.getItem("token")
     if (localToken) {
-        reqObj.headers["Authorization"] = "Bearer " + localToken
+        paramObj.headers["Authorization"] = "Bearer " + localToken
     }
 }
 
 export async function logIn({username, password}) {
-    reqObj.method = "POST"
-    reqObj.body = JSON.stringify({
-        username: username,
-        password: password
-    })
+    const reqObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    }
 
     try {
         console.log(reqObj);
@@ -34,11 +39,16 @@ export async function logIn({username, password}) {
 }
 
 export async function register({username, password}) {
-    reqObj.method = "POST"
-    reqObj.body = JSON.stringify({
-        username: username,
-        password: password
-    })
+    const reqObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    }
 
     try {
         const response = await fetch(url+'/users/register', reqObj)
@@ -53,8 +63,15 @@ export async function register({username, password}) {
 }
 
 export async function getCurrentUser() {
+    const reqObj = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+
     try {
-        includeToken()
+        includeToken(reqObj)
         const response = await fetch(url + '/users/me', reqObj)
         const result = await response.json()
         return result
@@ -64,8 +81,15 @@ export async function getCurrentUser() {
 }
 
 export async function getUserRoutines(username) {
+    const reqObj = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+
     try {
-        includeToken()
+        includeToken(reqObj)
         console.log(url + `/users/${username}/routines`);
         const response = await fetch(url + `/users/${username}/routines`, reqObj)
         const result = await response.json()
@@ -77,6 +101,13 @@ export async function getUserRoutines(username) {
 }
 
 export async function getPublicRoutines() {
+    const reqObj = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+
     try {
         const response = await fetch(url + '/routines', reqObj)
         const result = await response.json()
@@ -87,11 +118,41 @@ export async function getPublicRoutines() {
 }
 
 export async function getPublicActivities() {
+    const reqObj = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+
     try {
         const response = await fetch(url + '/activities', reqObj)
         const result = await response.json()
         return result
     } catch (error) {
-        console.errer(error)
+        console.error(error)
+    }
+}
+
+export async function postActivity({name, description}) {
+    const reqObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            description: description
+        })
+    }
+    includeToken(reqObj)
+
+    try {
+        console.log('print me every time this function runs');
+        const response = await fetch(url + '/activities', reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
     }
 }

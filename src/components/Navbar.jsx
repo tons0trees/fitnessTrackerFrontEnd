@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 import LoginPanel from './LoginPanel';
 
 const Navbar = ({ user, setUser }) => {
@@ -10,9 +10,9 @@ const Navbar = ({ user, setUser }) => {
                 {user ? <button onClick={() => {}}>Logout</button>: <LoginPanel setUser={setUser} />}
             </div>
             <div id='nav_tabs'>
-                <Link to='/routines'>Routines</Link>
-                <Link to='/activities'>Activities</Link>
-                { user ? <Link to='/myroutines'>My Routines</Link> : null }
+                <NavLink to='/routines'>Routines</NavLink>
+                <NavLink to='/activities'>Activities</NavLink>
+                { user ? <NavLink to='/myroutines'>My Routines</NavLink> : null }
             </div>
 
             <Outlet />
