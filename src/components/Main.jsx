@@ -27,7 +27,9 @@ const Main = () => {
                         <Route path="routines" element={<RoutineList user={null}/>}/>
                         <Route path="activities" element={<ActivityTab user={user}/>} />
                         <Route path="register" element={<RegisterPanel setUser={setUser}/>}/>
-                        <Route path="myroutines" element={<MyRoutinesTab user={user}/>}/>
+                        <Route path="myroutines" element={<MyRoutinesTab user={user}/>}>
+                            <Route path="create-routine" element={<div>HEllO I'm here</div>} />
+                        </Route>
                         <Route path="create-activity" element={<CreateActivityPanel/>}/>
                     </Route>
                 </Routes>
