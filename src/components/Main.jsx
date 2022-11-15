@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from "react"
 import {BrowserRouter, Routes, Route } from "react-router-dom"
 import { getCurrentUser } from "../api"
-import { Navbar, RegisterPanel, RoutineList, ActivityTab, CreateActivityPanel, MyRoutinesTab } from "./"
+import { Navbar, RegisterPanel, RoutineList, ActivityTab, CreateActivityPanel, MyRoutinesTab, CreateRoutinePanel} from "./"
 
 
 const Main = () => {
@@ -28,7 +28,7 @@ const Main = () => {
                         <Route path="activities" element={<ActivityTab user={user}/>} />
                         <Route path="register" element={<RegisterPanel setUser={setUser}/>}/>
                         <Route path="myroutines" element={<MyRoutinesTab user={user}/>}>
-                            <Route path="create-routine" element={<div>HEllO I'm here</div>} />
+                            <Route path="create-routine" element={<CreateRoutinePanel />} />
                         </Route>
                         <Route path="create-activity" element={<CreateActivityPanel/>}/>
                     </Route>

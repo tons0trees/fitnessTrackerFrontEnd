@@ -26,7 +26,6 @@ export async function logIn({username, password}) {
     }
 
     try {
-        console.log(reqObj);
         const response = await fetch(url+'/users/login', reqObj)
         const result = await response.json()
         const token = result.token
@@ -90,10 +89,8 @@ export async function getUserRoutines(username) {
 
     try {
         includeToken(reqObj)
-        console.log(url + `/users/${username}/routines`);
         const response = await fetch(url + `/users/${username}/routines`, reqObj)
         const result = await response.json()
-        console.log(result);
         return result
     } catch (error) {
         console.error(error)
@@ -148,11 +145,44 @@ export async function postActivity({name, description}) {
     includeToken(reqObj)
 
     try {
-        console.log('print me every time this function runs');
         const response = await fetch(url + '/activities', reqObj)
         const result = await response.json()
         return result
     } catch (error) {
         console.error(error)
     }
+}
+
+
+export async function postRoutine({name, goal, isPublic}) {
+    const reqObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            goal: goal,
+            isPublic: (isPublic || null)
+        })
+    }
+    includeToken(reqObj)
+
+    try {
+        const response = await fetch(url + '/routines', reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function deleteRoutine({id}) {
+    const reqObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    includeToken(reqObj)
 }

@@ -8,7 +8,7 @@ const MyRoutinesTab = ({user}) => {
         <div className="my_routines_tab">
             <Link to="create-routine">Create a New Routine</Link>
             <Outlet />
-            <RoutineList user={user} />
+            <RoutineList user={user} canDelete={true}/>
         </div>
     )
 }
