@@ -185,4 +185,14 @@ export async function deleteRoutine({id}) {
         }
     }
     includeToken(reqObj)
+
+    console.log('inside the delete');
+
+    try {
+        const response = await fetch(url + `/routines/${id}`, reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
 }

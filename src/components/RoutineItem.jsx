@@ -1,6 +1,16 @@
 import React, { useState, useEffect }from 'react'
 import { ActivityItem } from "./"
-const RoutineItem = ({routine, canDelete}) => {
+import { deleteRoutine } from '../api'
+
+const RoutineItem = ({routine, canDelete, list, setList}) => {
+
+    async function handleDelete(event) {
+        event.preventDefault()
+        const deletedRoutine= await deleteRoutine({id: routine.id})
+        const newList = list.filter((elem) => elem.id != routine.id)
+        setList(newList);
+    }
+
     return (
         <div className='routine_item'>
             
@@ -17,7 +27,7 @@ const RoutineItem = ({routine, canDelete}) => {
                 </ol>
                     
             </div>
-            {canDelete ? <button>DELETE</button> : null}
+            {canDelete ? <button onClick={handleDelete}>DELETE</button> : null}
         </div>
     )
 }
