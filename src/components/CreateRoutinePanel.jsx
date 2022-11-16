@@ -1,12 +1,10 @@
 import react, { useState } from "react";
 import { postRoutine } from "../api";
-import { useNavigate } from "react-router-dom";
 
-const CreateRoutinePanel = () => {
+const CreateRoutinePanel = ({list, setList, setCreating}) => {
     const [name, setName] = useState('')
     const [goal, setGoal] = useState('')
     const [isPublic, setIsPublic] = useState(false)
-    const nav = useNavigate()
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -18,7 +16,11 @@ const CreateRoutinePanel = () => {
         setName('')
         setGoal('')
         setIsPublic(false)
-        nav('/myroutines')
+
+        const newList = [...list]
+        newList.push(newRoutine)
+        setList(newList)
+        setCreating(false)
     }
 
     return (

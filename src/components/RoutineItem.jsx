@@ -22,9 +22,9 @@ const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
             <div>
                 <p>{routine.goal}</p>
                 <ol>
-                    {routine.activities.map((elem) => {
+                    {routine && routine.activities && routine.activities.length ? routine.activities.map((elem) => {
                     return <li key={"activity_" + elem.id}><ActivityItem  activity={elem}/></li>
-                    })}
+                    }) : null}
                 </ol>
                     
             </div>
@@ -33,7 +33,7 @@ const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
                 <button onClick={handleDelete}>DELETE</button> <button onClick={() => setEditing(!editing)}>EDIT</button>
             </div>
             : null}
-            {editing ? <EditRoutinePanel routine={routine}/> : null}
+            {editing ? <EditRoutinePanel routine={routine} list={list} setList={setList} setEditing={setEditing}/> : null}
         </div>
     )
 }

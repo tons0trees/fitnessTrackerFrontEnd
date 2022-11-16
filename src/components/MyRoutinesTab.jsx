@@ -1,14 +1,29 @@
-import react from "react";
+import react, { useState, useEffect} from "react";
 import { Link, Outlet } from "react-router-dom";
-import {RoutineList} from './'
+import {RoutineList, CreateRoutinePanel} from './'
+import { getUserRoutines } from "../api";
 
 const MyRoutinesTab = ({user}) => {
+    const [myRoutineList, setMyRoutineList] = useState([])
+    const [creating, setCreating] = useState(false)
+
+    useEffect(() => {
+        if (user) {
+            async function callGetUserRoutines() {
+                const list = await getUserRoutines(user.username)
+                setMyRoutineList(list)
+            }
+            callGetUserRoutines()           
+        } 
+    },[user])
 
     return (
         <div className="my_routines_tab">
-            <Link to="create-routine">Create a New Routine</Link>
-            <Outlet />
-            <RoutineList user={user} canDelete={true}/>
+            <button onClick={() => setCreating(!creating)}>Create a New Routine</button>
+            {creating ? 
+                <CreateRoutinePanel list={myRoutineList} setList={setMyRoutineList} setCreating={setCreating}/> 
+            : null}
+            <RoutineList list={myRoutineList} setList={setMyRoutineList} canDelete={true}/>
         </div>
     )
 }

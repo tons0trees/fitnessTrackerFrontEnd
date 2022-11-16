@@ -198,17 +198,18 @@ export async function deleteRoutine({id}) {
 }
 
 export async function updateRoutine({id, name, goal, isPublic}) {
-    
     const reqObj = {
         method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             name: name,
             goal: goal,
             isPublic: isPublic
         })
     }
-    console.log("*** ahahah ***", reqObj)
-        includeToken(reqObj)
+    includeToken(reqObj)
     
     try {
         const response = await fetch(url + `/routines/${id}`, reqObj)
