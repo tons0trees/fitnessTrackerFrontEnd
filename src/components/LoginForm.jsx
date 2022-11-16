@@ -1,27 +1,26 @@
-import React, {useState} from "react"
-import { useNavigate } from "react-router-dom";
-import { register } from "../api";
+import React, { useState } from "react"
+import { Link } from 'react-router-dom'
+import { logIn } from "../api";
 
-const RegisterPanel = ({ setUser }) => {
+
+const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const nav = useNavigate();
 
     async function handleSubmit(event) {
-        event.preventDefault();
-        const newUser = await register({
+        event.preventDefault()
+        const user = await logIn({
             username: username,
             password: password
         })
-        setUser(newUser)
+        setUser(user)
         setPassword('')
         setUsername('')
-        nav("/")
     }
 
     return (
-        <div className="register_panel">
-            <form id="register_form" onSubmit={handleSubmit}>
+        <div className="login_form_panel">
+            <form id="login_form" onSubmit={handleSubmit}>
                 <label htmlFor="username_input">
                     Username:
                     <input type="text" name="username_input" value={username} onChange={(elem) => setUsername(elem.target.value)} />
@@ -30,10 +29,14 @@ const RegisterPanel = ({ setUser }) => {
                     Password:
                     <input type="password" name="password_input" value={password} onChange={(elem) => setPassword(elem.target.value)}/>
                 </label>
-                <input type="submit" value="Register" />
+                <input type="submit" value="Log In" />
             </form>
+            <span>
+                Don't have an account? 
+                <Link to="/register"> Sign Up</Link>
+            </span>
         </div> 
     )
 }
 
-export default RegisterPanel;
+export default LoginForm;

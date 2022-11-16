@@ -1,12 +1,12 @@
 import react, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { getPublicActivities } from "../api";
-import { ActivityItem } from "./";
-import CreateActivityForm from "./CreateActivityForm";
+import { ActivityItem, CreateActivityForm } from "./";
+
 
 
 const ActivityTab = ({user}) => {
     const [activitiesList, setActivitiesList] = useState([])
+    const [readyToCreateActivity, setReadyToCreateActivity] = useState(false)
 
     useEffect(() => {
       async function callGetPublicActivities() {
@@ -19,7 +19,8 @@ const ActivityTab = ({user}) => {
 
     return (
         <div className="activity_tab">
-          {user ? <Link to='/create-activity'>Create New Activity</Link> : null}
+          {user ? <button onClick={() => setReadyToCreateActivity(!readyToCreateActivity)}>Create a New Activity</button> : null}
+          {readyToCreateActivity ? <CreateActivityForm setReady={setReadyToCreateActivity} /> : null}
           {activitiesList.length ? activitiesList.map((elem) => {
             return <ActivityItem key={"activity_" + elem.id} activity={elem}/>
           }) : null}

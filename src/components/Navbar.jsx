@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
-import LoginPanel from './LoginPanel';
+import LoginForm from './LoginForm';
 
 const Navbar = ({ user, setUser }) => {
     const nav = useNavigate()
@@ -16,7 +16,7 @@ const Navbar = ({ user, setUser }) => {
         <>
             <div id='navbar'>
                 <h2>I am navbar</h2>
-                {user ? <button onClick={handleLogout}>Logout</button>: <LoginPanel setUser={setUser} />}
+                {user ? <button onClick={handleLogout}>Logout</button>: <LoginForm setUser={setUser} />}
             </div>
             <div id='nav_tabs'>
                 <NavLink to='/routines'>Routines</NavLink>

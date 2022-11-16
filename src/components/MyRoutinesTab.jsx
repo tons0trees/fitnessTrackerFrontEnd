@@ -4,7 +4,7 @@ import { getUserRoutines } from "../api";
 
 const MyRoutinesTab = ({user}) => {
     const [myRoutineList, setMyRoutineList] = useState([])
-    const [creating, setCreating] = useState(false)
+    const [readyToCreate, setReadyToCreate] = useState(false)
 
     useEffect(() => {
         if (user) {
@@ -18,9 +18,9 @@ const MyRoutinesTab = ({user}) => {
 
     return (
         <div className="my_routines_tab">
-            <button onClick={() => setCreating(!creating)}>Create a New Routine</button>
-            {creating ? 
-                <CreateRoutineForm list={myRoutineList} setList={setMyRoutineList} setCreating={setCreating}/> 
+            <button onClick={() => setReadyToCreate(!readyToCreate)}>Create a New Routine</button>
+            {readyToCreate ? 
+                <CreateRoutineForm list={myRoutineList} setList={setMyRoutineList} setReady={setReadyToCreate}/> 
             : null}
             <RoutineList list={myRoutineList} setList={setMyRoutineList} isOwner={true}/>
         </div>

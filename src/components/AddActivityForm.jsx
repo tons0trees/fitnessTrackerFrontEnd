@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react";
 import { getPublicActivities, addActivityToRoutine } from "../api";
 
-const AddActivityForm = ({routine}) => {
+const AddActivityForm = ({routine, setReady}) => {
     const [activityList, setActivityList] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(null);
     const [duration, setDuration] = useState(0);

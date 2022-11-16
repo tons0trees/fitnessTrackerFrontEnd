@@ -1,9 +1,9 @@
-import React, { useState, useEffect }from 'react'
+import React, { useState }from 'react'
 import { ActivityItem, EditRoutineForm, AddActivityForm } from "./"
 import { deleteRoutine } from '../api'
 
 const RoutineItem = ({routine, isOwner, list, setList}) => {
-    const [editing, setEditing] = useState(false)
+    const [readyToEdit, setReadyToEdit] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
 
     async function handleDelete(event) {
@@ -14,8 +14,7 @@ const RoutineItem = ({routine, isOwner, list, setList}) => {
     }
 
     return (
-        <div className='routine_item'>
-            
+        <div className='routine_item'> 
             <span>
                 <h1>{routine.name}</h1>
                 <p>{routine.creatorName}</p>
@@ -32,11 +31,11 @@ const RoutineItem = ({routine, isOwner, list, setList}) => {
             {isOwner ? 
             <div>
                 <button onClick={handleDelete}>DELETE</button>
-                <button onClick={() => setEditing(!editing)}>EDIT</button>
+                <button onClick={() => setReadyToEdit(!readyToEdit)}>EDIT</button>
                 <button onClick={() => setAddActivity(!addActivity)}>ADD ACTIVITY</button>
             </div>
             : null}
-            {editing ? <EditRoutineForm routine={routine} list={list} setList={setList} setEditing={setEditing}/> : null}
+            {readyToEdit ? <EditRoutineForm routine={routine} list={list} setList={setList} setReady={setReadyToEdit}/> : null}
             {addActivity ? <AddActivityForm routine={routine}/> : null}
         </div>
     )

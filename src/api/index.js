@@ -1,10 +1,4 @@
 const url = 'https://fitnesstrac-kr.herokuapp.com/api'
-const notreqObj = {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-    }
-}
 
 function includeToken(paramObj) {
     const localToken = localStorage.getItem("token")
