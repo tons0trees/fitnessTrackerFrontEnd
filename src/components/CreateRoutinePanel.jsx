@@ -17,8 +17,7 @@ const CreateRoutinePanel = ({list, setList, setCreating}) => {
         setGoal('')
         setIsPublic(false)
 
-        const newList = [...list]
-        newList.push(newRoutine)
+        const newList = list.concat([newRoutine])
         setList(newList)
         setCreating(false)
     }
