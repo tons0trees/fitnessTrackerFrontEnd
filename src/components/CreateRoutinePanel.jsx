@@ -7,6 +7,7 @@ const CreateRoutinePanel = () => {
     const [goal, setGoal] = useState('')
     const [isPublic, setIsPublic] = useState(false)
     const nav = useNavigate()
+
     async function handleSubmit(event) {
         event.preventDefault()
         const newRoutine = await postRoutine({
@@ -18,7 +19,6 @@ const CreateRoutinePanel = () => {
         setGoal('')
         setIsPublic(false)
         nav('/myroutines')
-        console.log("**** HERE ****", newRoutine)
     }
 
     return (

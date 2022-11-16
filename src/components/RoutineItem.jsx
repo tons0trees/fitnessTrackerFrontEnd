@@ -1,8 +1,9 @@
 import React, { useState, useEffect }from 'react'
-import { ActivityItem } from "./"
+import { ActivityItem, EditRoutinePanel } from "./"
 import { deleteRoutine } from '../api'
 
-const RoutineItem = ({routine, canDelete, list, setList}) => {
+const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
+    const [editing, setEditing] = useState(false)
 
     async function handleDelete(event) {
         event.preventDefault()
@@ -27,7 +28,12 @@ const RoutineItem = ({routine, canDelete, list, setList}) => {
                 </ol>
                     
             </div>
-            {canDelete ? <button onClick={handleDelete}>DELETE</button> : null}
+            {isOwner ? 
+            <div>
+                <button onClick={handleDelete}>DELETE</button> <button onClick={() => setEditing(!editing)}>EDIT</button>
+            </div>
+            : null}
+            {editing ? <EditRoutinePanel /> : null}
         </div>
     )
 }
