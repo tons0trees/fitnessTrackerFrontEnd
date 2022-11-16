@@ -219,3 +219,24 @@ export async function updateRoutine({id, name, goal, isPublic}) {
         console.error(error)
     }
     }
+export async function addActivityToRoutine({routineId, activityId, count, duration}) {
+    const reqObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            activityId: activityId,
+            count: count,
+            duration: duration
+        })
+    }
+
+    try {
+        const response = await fetch(url + `/routines/${routineId}/activities`)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}

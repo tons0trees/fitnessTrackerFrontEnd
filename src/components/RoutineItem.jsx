@@ -1,9 +1,10 @@
 import React, { useState, useEffect }from 'react'
-import { ActivityItem, EditRoutinePanel } from "./"
+import { ActivityItem, EditRoutinePanel, AddActivityForm } from "./"
 import { deleteRoutine } from '../api'
 
 const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
     const [editing, setEditing] = useState(false)
+    const [addActivity, setAddActivity] = useState(false)
 
     async function handleDelete(event) {
         event.preventDefault()
@@ -30,10 +31,13 @@ const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
             </div>
             {isOwner ? 
             <div>
-                <button onClick={handleDelete}>DELETE</button> <button onClick={() => setEditing(!editing)}>EDIT</button>
+                <button onClick={handleDelete}>DELETE</button>
+                <button onClick={() => setEditing(!editing)}>EDIT</button>
+                <button onClick={() => setAddActivity(!addActivity)}>ADD ACTIVITY</button>
             </div>
             : null}
             {editing ? <EditRoutinePanel routine={routine} list={list} setList={setList} setEditing={setEditing}/> : null}
+            {addActivity ? <AddActivityForm /> : null}
         </div>
     )
 }
