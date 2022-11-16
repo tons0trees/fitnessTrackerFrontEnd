@@ -218,7 +218,8 @@ export async function updateRoutine({id, name, goal, isPublic}) {
     } catch (error) {
         console.error(error)
     }
-    }
+}
+
 export async function addActivityToRoutine({routineId, activityId, count, duration}) {
     const reqObj = {
         method: 'POST',
@@ -233,6 +234,7 @@ export async function addActivityToRoutine({routineId, activityId, count, durati
     }
 
     try {
+        console.log(url + `/routines/${routineId}/activities`,reqObj);
         const response = await fetch(url + `/routines/${routineId}/activities`)
         const result = await response.json()
         return result

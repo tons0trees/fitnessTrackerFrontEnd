@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postActivity } from "../api";
 
-const CreateActivityPanel = ({ user }) => {
+const CreateActivityForm = ({ user }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
 
@@ -37,4 +37,4 @@ const CreateActivityPanel = ({ user }) => {
     );
 };
 
-export default CreateActivityPanel;
+export default CreateActivityForm;

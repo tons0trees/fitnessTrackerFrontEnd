@@ -1,6 +1,5 @@
 import react, { useState, useEffect} from "react";
-import { Link, Outlet } from "react-router-dom";
-import {RoutineList, CreateRoutinePanel} from './'
+import { RoutineList, CreateRoutineForm } from './'
 import { getUserRoutines } from "../api";
 
 const MyRoutinesTab = ({user}) => {
@@ -21,9 +20,9 @@ const MyRoutinesTab = ({user}) => {
         <div className="my_routines_tab">
             <button onClick={() => setCreating(!creating)}>Create a New Routine</button>
             {creating ? 
-                <CreateRoutinePanel list={myRoutineList} setList={setMyRoutineList} setCreating={setCreating}/> 
+                <CreateRoutineForm list={myRoutineList} setList={setMyRoutineList} setCreating={setCreating}/> 
             : null}
-            <RoutineList list={myRoutineList} setList={setMyRoutineList} canDelete={true}/>
+            <RoutineList list={myRoutineList} setList={setMyRoutineList} isOwner={true}/>
         </div>
     )
 }

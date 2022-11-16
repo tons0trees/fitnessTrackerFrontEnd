@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import { postRoutine } from "../api";
 
-const CreateRoutinePanel = ({list, setList, setCreating}) => {
+const CreateRoutineForm = ({list, setList, setCreating}) => {
     const [name, setName] = useState('')
     const [goal, setGoal] = useState('')
     const [isPublic, setIsPublic] = useState(false)
@@ -45,4 +45,4 @@ const CreateRoutinePanel = ({list, setList, setCreating}) => {
     )
 }
 
-export default CreateRoutinePanel
+export default CreateRoutineForm

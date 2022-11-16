@@ -1,8 +1,8 @@
 import react, { useState, useEffect } from "react";
-import { RoutineList } from "./";
+import { RoutineList } from ".";
 import { getPublicRoutines } from '../api'
 
-const RoutinesTab = () => {
+const PublicRoutinesTab = () => {
     const [publicList, setPublicList] = useState([])
 
     useEffect(() => {
@@ -15,9 +15,9 @@ const RoutinesTab = () => {
 
     return (
         <div className="routines_tab">
-            <RoutineList list={publicList} setList={setPublicList} canDelete={false}/>
+            <RoutineList list={publicList} setList={setPublicList} isOwner={false}/>
         </div>
     )
 }
 
-export default RoutinesTab
+export default PublicRoutinesTab

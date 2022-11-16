@@ -1,8 +1,8 @@
 import React, { useState, useEffect }from 'react'
-import { ActivityItem, EditRoutinePanel, AddActivityForm } from "./"
+import { ActivityItem, EditRoutineForm, AddActivityForm } from "./"
 import { deleteRoutine } from '../api'
 
-const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
+const RoutineItem = ({routine, isOwner, list, setList}) => {
     const [editing, setEditing] = useState(false)
     const [addActivity, setAddActivity] = useState(false)
 
@@ -36,8 +36,8 @@ const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
                 <button onClick={() => setAddActivity(!addActivity)}>ADD ACTIVITY</button>
             </div>
             : null}
-            {editing ? <EditRoutinePanel routine={routine} list={list} setList={setList} setEditing={setEditing}/> : null}
-            {addActivity ? <AddActivityForm /> : null}
+            {editing ? <EditRoutineForm routine={routine} list={list} setList={setList} setEditing={setEditing}/> : null}
+            {addActivity ? <AddActivityForm routine={routine}/> : null}
         </div>
     )
 }

@@ -2,7 +2,7 @@ import react, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getPublicActivities } from "../api";
 import { ActivityItem } from "./";
-import CreateActivity from "./CreateActivityPanel";
+import CreateActivityForm from "./CreateActivityForm";
 
 
 const ActivityTab = ({user}) => {
