@@ -33,7 +33,7 @@ const RoutineItem = ({routine, canDelete: isOwner, list, setList}) => {
                 <button onClick={handleDelete}>DELETE</button> <button onClick={() => setEditing(!editing)}>EDIT</button>
             </div>
             : null}
-            {editing ? <EditRoutinePanel /> : null}
+            {editing ? <EditRoutinePanel routine={routine}/> : null}
         </div>
     )
 }

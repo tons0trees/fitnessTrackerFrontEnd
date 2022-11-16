@@ -14,7 +14,6 @@ const CreateActivityPanel = ({ user }) => {
             name: name,
             description: description
         })
-        console.log(newActivity);
         setName('')
         setDescription('')
         nav('/activities')

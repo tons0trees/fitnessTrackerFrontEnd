@@ -30,7 +30,7 @@ const CreateRoutinePanel = () => {
                 </label>
                 <label htmlFor="goal">
                     Goal:
-                    <input type="text" name="goal" value={goal} onChange={(elem) => setGoal(elem.target.value)}/>
+                    <textarea rows="4" cols="50" name="goal" value={goal} onChange={(elem) => setGoal(elem.target.value)}/>
                 </label>
                 <label htmlFor="isPublic">
                     <select defaultValue={isPublic} onChange={(elem) => setIsPublic(elem.target.value)}>
