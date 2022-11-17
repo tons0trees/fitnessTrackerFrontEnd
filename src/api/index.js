@@ -253,3 +253,25 @@ export async function deleteActivity({routineActivityId}) {
         console.error(error)
     }
 }
+
+export async function updateRoutineActivity({routineActivityId, count, duration}) {
+    const reqObj = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            count: count,
+            duration: duration
+        })
+    }
+    includeToken(reqObj)
+
+    try {
+        const response = await fetch(url + `/routine_activities/${routineActivityId}`, reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}

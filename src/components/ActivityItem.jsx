@@ -1,37 +1,49 @@
 import React, { useState } from "react";
 import { deleteActivity } from "../api";
+import { EditActivityForm } from "./";
 
-const ActivityItem = ({ activity, isOwner, list, setList }) => {
-    const [readyToEdit, setReadyToEdit] = useState(false)
+const ActivityItem = ({ activity, isOwner }) => {
+    const [thisActivity, setThisActivity] = useState(activity);
+    const [readyToEdit, setReadyToEdit] = useState(false);
 
     async function handleDelete(event) {
         event.preventDefault();
         await deleteActivity(activity);
-        const newList = [...list];
-        const routine = newList.find((elem) => elem.id === activity.routineId);
-        const newActivityList = routine.activities.filter(
-            (elem) => activity.id != elem.id
-        );
-        routine.activities = newActivityList;
-        setList(newList);
+        setThisActivity(null)
     }
     return (
-        <div className="activity_item">
-            <b>{activity.name}</b>
-            <p>{activity.description}</p>
-            <span>
-                {" "}
-                duration: {activity.duration}, count: {activity.count}
-            </span>
-            <div>
-                {isOwner ? (
-                  <div>
-                    <button onClick={handleDelete}>DELETE</button>
-                    <button onClick={() => {setReadyToEdit(!readyToEdit)}}>EDIT</button>
-                  </div>
-                ) : null}
-            </div>
-        </div>
+        <>
+            {thisActivity ? (
+                <li className="activity_item">
+                    <b>{thisActivity.name}</b>
+                    <p>{thisActivity.description}</p>
+                    <div>
+                        {isOwner ? (
+                            <div>
+                                <p>
+                                    duration: {thisActivity.duration}, count: {thisActivity.count}
+                                </p>
+                                <button onClick={handleDelete}>DELETE</button>
+                                <button
+                                    onClick={() => {
+                                        setReadyToEdit(!readyToEdit);
+                                    }}
+                                >
+                                    EDIT
+                                </button>
+                            </div>
+                        ) : null}
+                        {readyToEdit ? (
+                            <EditActivityForm
+                                activity={thisActivity}
+                                setActivity={setThisActivity}
+                                setReady={setReadyToEdit}
+                            />
+                        ) : null}
+                    </div>
+                </li>
+            ) : null}
+        </>
     );
 };
 

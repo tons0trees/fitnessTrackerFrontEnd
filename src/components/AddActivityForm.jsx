@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react";
 import { getPublicActivities, addActivityToRoutine } from "../api";
 
-const AddActivityForm = ({routine, setReady, list, setList}) => {
+const AddActivityForm = ({routine, setRoutine, setReady}) => {
     const [activityList, setActivityList] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(null);
     const [duration, setDuration] = useState(0);
@@ -15,28 +15,18 @@ const AddActivityForm = ({routine, setReady, list, setList}) => {
             count: count, 
             duration: duration
         })
-        const newList = [...list]
-        
-        const index = newList.findIndex((elem)=>{
-            return routine.id === elem.id
-        })
-        
-        const name = activityList.find((elem)=>{
+
+        const newActivityInfo = activityList.find((elem)=>{
             return  newActivity.activityId === elem.id
         })
-        
-        const correctlyFormattedActivity = {
-            name: name.name,
-            description: name.description,
-            count: newActivity.count,
-            duration: newActivity.duration,
-            id: newActivity.activityId,
-            routineActivityId: newActivity.id,
-            routineId: newActivity.routineId
-        }
-        
-        newList[index].activities.push(correctlyFormattedActivity)
-        setList(newList)
+        newActivity.routineActivityId = newActivity.id
+        newActivity.id = newActivityInfo.id
+        newActivity.name = newActivityInfo.name
+        newActivity.description = newActivityInfo.description
+
+        const newRoutine = {...routine}
+        newRoutine.activities.push(newActivity)
+        setRoutine(newRoutine)
         setReady(false)
     }
 

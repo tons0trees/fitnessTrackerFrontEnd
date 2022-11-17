@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import { updateRoutine } from "../api";
 
-const EditRoutineForm = ({ routine, list, setList, setReady }) => {
+const EditRoutineForm = ({ routine, setRoutine, setReady }) => {
     const [newName, setNewName] = useState(routine.name);
     const [newGoal, setNewGoal] = useState(routine.goal);
     const [newIsPublic, setNewIsPublic] = useState(routine.isPublic);
@@ -14,9 +14,9 @@ const EditRoutineForm = ({ routine, list, setList, setReady }) => {
             goal: newGoal,
             isPublic: newIsPublic,
         });
-        const newList = list.filter((elem) => elem.id != routine.id);
-        newList.unshift(updatedRoutine);
-        setList(newList);
+        updatedRoutine.activities = routine.activities
+        updatedRoutine.creatorName = routine.creatorName
+        setRoutine(updatedRoutine)
         setReady(false);
     }
 
