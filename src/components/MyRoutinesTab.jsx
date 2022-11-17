@@ -14,7 +14,7 @@ const MyRoutinesTab = ({user}) => {
             }
             callGetUserRoutines()           
         } 
-    },[user])
+    },[])
 
     return (
         <div className="my_routines_tab">
