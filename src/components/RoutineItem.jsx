@@ -4,7 +4,7 @@ import { deleteRoutine } from '../api'
 
 const RoutineItem = ({routine, isOwner, list, setList}) => {
     const [readyToEdit, setReadyToEdit] = useState(false)
-    const [addActivity, setAddActivity] = useState(false)
+    const [readyToAddActivity, setReadyToAddActivity] = useState(false)
 
     async function handleDelete(event) {
         event.preventDefault()
@@ -32,11 +32,11 @@ const RoutineItem = ({routine, isOwner, list, setList}) => {
             <div>
                 <button onClick={handleDelete}>DELETE</button>
                 <button onClick={() => setReadyToEdit(!readyToEdit)}>EDIT</button>
-                <button onClick={() => setAddActivity(!addActivity)}>ADD ACTIVITY</button>
+                <button onClick={() => setReadyToAddActivity(!readyToAddActivity)}>ADD ACTIVITY</button>
             </div>
             : null}
             {readyToEdit ? <EditRoutineForm routine={routine} list={list} setList={setList} setReady={setReadyToEdit}/> : null}
-            {addActivity ? <AddActivityForm routine={routine}/> : null}
+            {readyToAddActivity ? <AddActivityForm routine={routine} list={list} setList={setList} setReady={setReadyToAddActivity}/> : null}
         </div>
     )
 }

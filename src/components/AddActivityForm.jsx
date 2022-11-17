@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react";
 import { getPublicActivities, addActivityToRoutine } from "../api";
 
-const AddActivityForm = ({routine, setReady}) => {
+const AddActivityForm = ({routine, setReady, list, setList}) => {
     const [activityList, setActivityList] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(null);
     const [duration, setDuration] = useState(0);
@@ -15,6 +15,21 @@ const AddActivityForm = ({routine, setReady}) => {
             count: count, 
             duration: duration
         })
+        setReady(false)
+        const newList = [...list]
+
+        const index = newList.findIndex((elem)=>{
+            return routine.id === elem.id
+        })
+
+        const name = activityList.find((elem)=>{
+            return  newActivity.activityId === elem.id
+        })
+        console.log(newList[index].activities)
+        console.log("**** name ****", newActivity, name)
+        // newList[index].activities.push(newActivity)
+        
+        // setList(newList)
     }
 
     useEffect(() => {
