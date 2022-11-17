@@ -229,7 +229,7 @@ export async function addActivityToRoutine({routineId, activityId, count, durati
 
     try {
         console.log(url + `/routines/${routineId}/activities`,reqObj);
-        const response = await fetch(url + `/routines/${routineId}/activities`)
+        const response = await fetch(url + `/routines/${routineId}/activities`, reqObj)
         const result = await response.json()
         return result
     } catch (error) {
