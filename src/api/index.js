@@ -235,3 +235,21 @@ export async function addActivityToRoutine({routineId, activityId, count, durati
         console.error(error)
     }
 }
+
+export async function deleteActivity({routineActivityId}) {
+    const reqObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    includeToken(reqObj)
+
+    try {
+        const response = await fetch(url + `/routine_activities/${routineActivityId}`, reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
