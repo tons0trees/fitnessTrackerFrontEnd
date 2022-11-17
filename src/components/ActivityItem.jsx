@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteActivity } from "../api";
 
 const ActivityItem = ({ activity, isOwner, list, setList }) => {
+    const [readyToEdit, setReadyToEdit] = useState(false)
+
     async function handleDelete(event) {
         event.preventDefault();
         await deleteActivity(activity);
@@ -23,7 +25,10 @@ const ActivityItem = ({ activity, isOwner, list, setList }) => {
             </span>
             <div>
                 {isOwner ? (
+                  <div>
                     <button onClick={handleDelete}>DELETE</button>
+                    <button onClick={() => {setReadyToEdit(!readyToEdit)}}>EDIT</button>
+                  </div>
                 ) : null}
             </div>
         </div>
