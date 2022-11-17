@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { deleteActivity } from "../api";
 import { EditActivityForm } from "./";
 
-const ActivityItem = ({ activity, isOwner }) => {
+const ActivityItem = ({ activity, isOwner, hideCount }) => {
     const [thisActivity, setThisActivity] = useState(activity);
     const [readyToEdit, setReadyToEdit] = useState(false);
 
@@ -18,11 +18,13 @@ const ActivityItem = ({ activity, isOwner }) => {
                     <b>{thisActivity.name}</b>
                     <p>{thisActivity.description}</p>
                     <div>
-                        {isOwner ? (
-                            <div>
+                        {!hideCount ?
                                 <p>
                                     duration: {thisActivity.duration}, count: {thisActivity.count}
                                 </p>
+                        : null}
+                        {isOwner ? (
+                            <div>
                                 <button onClick={handleDelete}>DELETE</button>
                                 <button
                                     onClick={() => {

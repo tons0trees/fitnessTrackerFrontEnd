@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { postActivity } from "../api";
 
-const CreateActivityForm = ({ setReady }) => {
+const CreateActivityForm = ({ list, setList, setReady }) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
 
@@ -11,6 +11,9 @@ const CreateActivityForm = ({ setReady }) => {
             name: name,
             description: description
         })
+        const newList = [...list]
+        newList.unshift(newActivity)
+        setList(newList)
         setName('')
         setDescription('')
         setReady(false)
@@ -25,7 +28,13 @@ const CreateActivityForm = ({ setReady }) => {
             </label>
             <label htmlFor="description">
                 Description:
-                <input type="text" name="description" value={description} onChange={(elem) => setDescription(elem.target.value)} />
+                <textarea
+                    rows="4"
+                    cols="50"
+                    name="description"
+                    value={description}
+                    onChange={(elem) => setDescription(elem.target.value)}
+                />
             </label>
             <button type="submit">Submit</button>
         </form>

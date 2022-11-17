@@ -20,9 +20,9 @@ const ActivityTab = ({user}) => {
     return (
         <div className="activity_tab">
           {user ? <button onClick={() => setReadyToCreateActivity(!readyToCreateActivity)}>Create a New Activity</button> : null}
-          {readyToCreateActivity ? <CreateActivityForm setReady={setReadyToCreateActivity} /> : null}
+          {readyToCreateActivity ? <CreateActivityForm setReady={setReadyToCreateActivity} list={activitiesList} setList={setActivitiesList}/> : null}
           {activitiesList.length ? activitiesList.map((elem) => {
-            return <ActivityItem key={"activity_" + elem.id} activity={elem}/>
+            return <ActivityItem key={"activity_" + elem.id} activity={elem} hideCount={true}/>
           }) : null}
         </div>
     )
