@@ -15,22 +15,32 @@ const AddActivityForm = ({routine, setReady, list, setList}) => {
             count: count, 
             duration: duration
         })
-        setReady(false)
         const newList = [...list]
-
+        
         const index = newList.findIndex((elem)=>{
             return routine.id === elem.id
         })
-
+        
         const name = activityList.find((elem)=>{
             return  newActivity.activityId === elem.id
         })
-        console.log(newList[index].activities)
-        console.log("**** name ****", newActivity, name)
-        // newList[index].activities.push(newActivity)
         
-        // setList(newList)
+        const correctlyFormattedActivity = {
+            name: name.name,
+            description: name.description,
+            count: newActivity.count,
+            duration: newActivity.duration,
+            id: newActivity.activityId,
+            routineActivityId: newActivity.id,
+            routineId: newActivity.routineId
+        }
+        
+        newList[index].activities.push(correctlyFormattedActivity)
+        console.log(newList);
+        setList(newList)
+        setReady(false)
     }
+
 
     useEffect(() => {
         async function callGetPublicActivities() {
