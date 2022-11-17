@@ -23,7 +23,7 @@ const RoutineItem = ({routine, isOwner, list, setList}) => {
                 <p>{routine.goal}</p>
                 <ol>
                     {routine && routine.activities && routine.activities.length ? routine.activities.map((elem) => {
-                    return <li key={"activity_" + elem.id}><ActivityItem  activity={elem}/></li>
+                    return <li key={"activity_" + elem.id}><ActivityItem  activity={elem} isOwner={isOwner}/></li>
                     }) : null}
                 </ol>
                     

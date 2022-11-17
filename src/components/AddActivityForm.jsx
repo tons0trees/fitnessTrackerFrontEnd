@@ -36,7 +36,6 @@ const AddActivityForm = ({routine, setReady, list, setList}) => {
         }
         
         newList[index].activities.push(correctlyFormattedActivity)
-        console.log(newList);
         setList(newList)
         setReady(false)
     }
