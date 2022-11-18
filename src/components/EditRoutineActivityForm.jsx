@@ -22,7 +22,7 @@ const EditRoutineActivityForm = ({ activity, setActivity, setReady }) => {
   }
 
   return (
-    <form className="edit_activity_form" onSubmit={handleSubmit}>
+    <form className="edit_routine_activity_form" onSubmit={handleSubmit}>
       <label htmlFor="duration">
         Duration:
         <input
