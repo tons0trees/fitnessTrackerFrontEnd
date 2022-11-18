@@ -108,3 +108,19 @@ export async function updateRoutineActivity({ routineActivityId, count, duration
         console.error(error)
     }
 }
+
+export async function getRoutinesByActivity({activityId}) {
+    const reqObj = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }
+    try {
+        const response = await fetch(url + `/activities/${activityId}/routines`, reqObj)
+        const result = await response.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}

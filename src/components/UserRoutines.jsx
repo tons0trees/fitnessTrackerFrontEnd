@@ -17,7 +17,7 @@ const UserRoutines = () => {
 
     return (
         <div className="user_routines">
-            <RoutineList list={myRoutineList}/>
+            {myRoutineList.length ? <RoutineList list={myRoutineList}/> : null}
         </div>
     )
 }

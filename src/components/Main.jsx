@@ -9,6 +9,7 @@ import {
   CreateActivityForm,
   MyRoutinesTab,
 } from "./";
+import MatchByActivities from "./MatchByActivities";
 import UserRoutines from "./UserRoutines";
 
 const Main = () => {
@@ -33,6 +34,7 @@ const Main = () => {
             <Route path="routines" element={<PublicRoutinesTab />} />
             <Route path="routines/:user" element={<UserRoutines />} />
             <Route path="activities" element={<ActivityTab user={user} />} />
+            <Route path="activities/:activityId" element={<MatchByActivities />} />
             <Route
               path="register"
               element={<RegisterForm setUser={setUser} />}
