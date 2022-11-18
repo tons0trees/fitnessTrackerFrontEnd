@@ -25,7 +25,12 @@ export async function logIn({username, password}) {
         const token = result.token
         localStorage.removeItem("token")
         localStorage.setItem("token", token)
-        return result.user
+
+        if (result.error) {
+            return result
+        } else {
+            return result.user
+        }
     } catch (error) {
         console.error(error)
     }
