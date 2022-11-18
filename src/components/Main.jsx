@@ -9,6 +9,7 @@ import {
   CreateActivityForm,
   MyRoutinesTab,
 } from "./";
+import UserRoutines from "./UserRoutines";
 
 const Main = () => {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<Navbar user={user} setUser={setUser} />}>
             <Route path="routines" element={<PublicRoutinesTab />} />
+            <Route path="routines/:user" element={<UserRoutines />} />
             <Route path="activities" element={<ActivityTab user={user} />} />
             <Route
               path="register"

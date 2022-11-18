@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ActivityItem, EditRoutineForm, AddActivityForm } from "./";
 import { deleteRoutine } from "../api/Routines";
+import { Link } from "react-router-dom";
 
 const RoutineItem = ({ routine, isOwner, list, setList }) => {
   const [readyToEdit, setReadyToEdit] = useState(false);
@@ -19,7 +20,7 @@ const RoutineItem = ({ routine, isOwner, list, setList }) => {
         <div className="routine_item">
           <span>
             <h1>{thisRoutine.name}</h1>
-            <p>{thisRoutine.creatorName}</p>
+            <Link to={`/routines/${thisRoutine.creatorName}`}>{thisRoutine.creatorName}</Link>
           </span>
           <div>
             <p>{thisRoutine.goal}</p>

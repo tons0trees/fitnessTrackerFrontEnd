@@ -7,16 +7,16 @@ function includeToken(paramObj) {
     }
 }
 
-export async function getUserRoutines(username) {
+export async function getUserRoutines({username, id}) {
     const reqObj = {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         }
     }
+    if (id) includeToken(reqObj)
 
     try {
-        includeToken(reqObj)
         const response = await fetch(url + `/users/${username}/routines`, reqObj)
         const result = await response.json()
         return result

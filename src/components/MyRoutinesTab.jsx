@@ -9,7 +9,7 @@ const MyRoutinesTab = ({ user }) => {
   useEffect(() => {
     if (user) {
       async function callGetUserRoutines() {
-        const list = await getUserRoutines(user.username);
+        const list = await getUserRoutines(user);
         setMyRoutineList(list);
       }
       callGetUserRoutines();

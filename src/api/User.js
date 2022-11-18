@@ -82,21 +82,3 @@ export async function getCurrentUser() {
         console.error(error)
     }
 }
-
-export async function getUserRoutines(username) {
-    const reqObj = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }
-
-    try {
-        includeToken(reqObj)
-        const response = await fetch(url + `/users/${username}/routines`, reqObj)
-        const result = await response.json()
-        return result
-    } catch (error) {
-        console.error(error)
-    }
-}
