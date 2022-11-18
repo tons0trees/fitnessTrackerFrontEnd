@@ -8,7 +8,6 @@ const UserRoutines = () => {
     const params = useParams()
     
     useEffect(() => {
-        console.log(params);
         async function callGetUserRoutines() {
             const list = await getUserRoutines({username: params.user});
             setMyRoutineList(list);
