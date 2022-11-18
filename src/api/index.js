@@ -22,10 +22,15 @@ export async function logIn({username, password}) {
     try {
         const response = await fetch(url+'/users/login', reqObj)
         const result = await response.json()
-        const token = result.token
-        localStorage.removeItem("token")
-        localStorage.setItem("token", token)
-        return result.user
+        
+        if (result.error) {
+            return result
+        } else {
+            const token = result.token
+            localStorage.removeItem("token")
+            localStorage.setItem("token", token)
+            return result.user
+        }
     } catch (error) {
         console.error(error)
     }
@@ -46,10 +51,15 @@ export async function register({username, password}) {
     try {
         const response = await fetch(url+'/users/register', reqObj)
         const result = await response.json()
-        const token = result.token
-        localStorage.removeItem("token")
-        localStorage.setItem("token", token)
-        return result.user
+        console.log(result);
+        if (result.error) {
+            return result
+        } else {
+            const token = result.token
+            localStorage.removeItem("token")
+            localStorage.setItem("token", token)
+            return result.user
+        }
     } catch (error) {
         console.error(error)
     }

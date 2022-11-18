@@ -13,7 +13,12 @@ const LoginForm = ({ setUser }) => {
             username: username,
             password: password
         })
-        setUser(user)
+        if (user.error) {
+            console.log(user);
+            alert(user.message)
+        } else {
+            setUser(user)
+        }
         setPassword('')
         setUsername('')
     }

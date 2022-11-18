@@ -13,10 +13,15 @@ const RegisterForm = ({ setUser }) => {
             username: username,
             password: password
         })
-        setUser(newUser)
+
+        if (newUser.error) {
+            alert(newUser.message)
+        } else {
+            setUser(newUser)
+            nav("/")
+        }
         setPassword('')
         setUsername('')
-        nav("/")
     }
 
     return (
