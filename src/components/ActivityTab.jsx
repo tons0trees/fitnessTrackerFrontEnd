@@ -36,7 +36,7 @@ const ActivityTab = ({ user }) => {
               <ActivityItem
                 key={"activity_" + elem.id}
                 activity={elem}
-                hideCount={true}
+                inPublic={true}
               />
             );
           })

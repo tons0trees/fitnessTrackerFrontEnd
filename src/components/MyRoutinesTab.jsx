@@ -28,11 +28,13 @@ const MyRoutinesTab = ({ user }) => {
           setReady={setReadyToCreate}
         />
       ) : null}
-      <RoutineList
-        list={myRoutineList}
-        setList={setMyRoutineList}
-        isOwner={true}
-      />
+      {myRoutineList.length ?
+        <RoutineList
+          list={myRoutineList}
+         setList={setMyRoutineList}
+         isOwner={true}
+        />  
+      : null}
     </div>
   );
 };

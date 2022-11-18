@@ -35,8 +35,11 @@ const AddActivityForm = ({ routine, setRoutine, setReady }) => {
 
   useEffect(() => {
     async function callGetPublicActivities() {
-      const newList = await getPublicActivities();
-      setActivityList(newList);
+      const allList = await getPublicActivities();
+      const existingActivities = routine.activities.map(elem => elem.id)
+      const filterList = allList.filter((elem) => !existingActivities.includes(elem.id))
+
+      setActivityList(filterList);
     }
     callGetPublicActivities();
   }, []);

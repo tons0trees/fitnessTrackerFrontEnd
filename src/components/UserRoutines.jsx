@@ -4,20 +4,20 @@ import {RoutineList} from './'
 import { getUserRoutines } from "../api/Routines";
 
 const UserRoutines = () => {
-    const [myRoutineList, setMyRoutineList] = useState([]);
+    const [userRoutineList, setUserRoutineList] = useState([]);
     const params = useParams()
     
     useEffect(() => {
         async function callGetUserRoutines() {
             const list = await getUserRoutines({username: params.user});
-            setMyRoutineList(list);
+            setUserRoutineList(list);
         }
         callGetUserRoutines();
     },[])
 
     return (
         <div className="user_routines">
-            {myRoutineList.length ? <RoutineList list={myRoutineList}/> : null}
+            {userRoutineList.length ? <RoutineList list={userRoutineList} setList={setUserRoutineList}/> : null}
         </div>
     )
 }

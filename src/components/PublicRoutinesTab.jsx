@@ -15,7 +15,9 @@ const PublicRoutinesTab = () => {
 
   return (
     <div className="routines_tab">
-      <RoutineList list={publicList} setList={setPublicList} isOwner={false} />
+      {publicList.length ?
+        <RoutineList list={publicList} setList={setPublicList} isOwner={false} />
+      : null}
     </div>
   );
 };
