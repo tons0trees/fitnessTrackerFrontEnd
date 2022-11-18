@@ -1,23 +1,23 @@
 import react, { useState, useEffect } from "react";
 import { RoutineList } from ".";
-import { getPublicRoutines } from '../api'
+import { getPublicRoutines } from "../api/Routines";
 
 const PublicRoutinesTab = () => {
-    const [publicList, setPublicList] = useState([])
+  const [publicList, setPublicList] = useState([]);
 
-    useEffect(() => {
-        async function callGetPubicRoutines() {
-            const list = await getPublicRoutines()
-            setPublicList(list)
-        }
-        callGetPubicRoutines()       
-    },[])
+  useEffect(() => {
+    async function callGetPubicRoutines() {
+      const list = await getPublicRoutines();
+      setPublicList(list);
+    }
+    callGetPubicRoutines();
+  }, []);
 
-    return (
-        <div className="routines_tab">
-            <RoutineList list={publicList} setList={setPublicList} isOwner={false}/>
-        </div>
-    )
-}
+  return (
+    <div className="routines_tab">
+      <RoutineList list={publicList} setList={setPublicList} isOwner={false} />
+    </div>
+  );
+};
 
-export default PublicRoutinesTab
+export default PublicRoutinesTab;

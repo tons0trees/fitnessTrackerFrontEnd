@@ -1,13 +1,13 @@
 body {
   background-color: orange;
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: "Raleway", Arial, sans-serif;
   height: 100vh;
   width: 100vw;
   margin: 0;
 }
 
 #navbar {
-  font-family: 'Poller One', Arial, sans-serif;
+  font-family: "Poller One", Arial, sans-serif;
   flex-grow: 1;
   max-height: 10%;
   min-height: 40px;
@@ -32,7 +32,6 @@ body {
 .register_form {
   display: flex;
   flex-direction: column;
-
 }
 
 .routine_list {
@@ -57,5 +56,4 @@ body {
   margin: 5px;
   border-bottom: solid black 2px;
   margin-bottom: 10px;
-
 }
